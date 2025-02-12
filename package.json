@@ -1,0 +1,192 @@
+{
+  "name": "vstest-runner",
+  "displayName": "vstest-runner",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.54.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:vstest-runner.refreshTests",
+    "onView:testListView"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "vstest-runner.buildApp",
+        "title": "VSTest (.NET Framework): Build App"
+      },
+      {
+        "command": "vstest-runner.runAll",
+        "title": "VSTest (.NET Framework): Run All Tests"
+      },
+      {
+        "command": "vstest-runner.refreshTests",
+        "title": "VSTest (.NET Framework): Refresh Test List"
+      },
+      {
+        "command": "vstest-runner.runTest",
+        "title": "VSTest (.NET Framework): Run Test"
+      },
+      {
+        "command": "vstest-runner.enterFilterText",
+        "title": "VSTest (.NET Framework): Filter Tests"
+      },
+      {
+        "command": "vstest-runner.openTestFile",
+        "title": "VSTest (.NET Framework): Open Test File"
+      },
+      {
+        "command": "vstest-runner.openTestMethod",
+        "title": "VSTest (.NET Framework): Open Test Method in Editor"
+      },
+      {
+        "command": "vstest-runner.runAllTestsInFile",
+        "title": "VSTest (.NET Framework): Run All Tests in File"
+      },
+      {
+        "command": "vstest-runner.debugTestFile",
+        "title": "VSTest (.NET Framework): Debug Test File"
+      },
+      {
+        "command": "vstest-runner.debugTestMethod",
+        "title": "VSTest (.NET Framework): Debug Test Method"
+      },
+      {
+        "command": "vstest-runner.debugTests",
+        "title": "VSTest (.NET Framework): Run All"
+      },
+      {
+        "command": "vstest-runner.buildComplete",
+        "title": "VSTest (.NET Framework): Clean, Restore, Rebuild Solution"
+      },
+      {
+        "command": "vstest-runner.cleanSolution",
+        "title": "VSTest (.NET Framework): Clean Solution"
+      },
+      {
+        "command": "vstest-runner.restoreSolution",
+        "title": "VSTest (.NET Framework): Restore Solution"
+      },
+      {
+        "command": "vstest-runner.rebuildSolution",
+        "title": "VSTest (.NET Framework): Rebuild Solution"
+      },
+      {
+        "command": "vstest-runner.buildSolution",
+        "title": "VSTest (.NET Framework): Build Solution"
+      },
+      {
+        "command": "vstest-runner.launchOnIssExpress",
+        "title": "VSTest (.NET Framework): Launch on IIS Express"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "testExplorer",
+          "title": "Test Explorer",
+          "icon": "resources/logo.svg"
+        },
+        {
+          "id": "explorer",
+          "title": "Test Runner",
+          "icon": "$(gear)"
+        }
+      ]
+    },
+    "views": {
+      "testExplorer": [
+        {
+          "id": "testListView",
+          "name": ".NET Framework"
+        }
+      ],
+      "explorer": [
+        {
+          "id": "vstestBuildView",
+          "name": "Solution Actions",
+          "when": "workspaceFolderCount != 0" 
+        }
+      ]
+    },
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "vstest-runner.runAllTestsInFile",
+          "when": "viewItem == testFile",
+          "group": "navigation"
+        },
+        {
+          "command": "vstest-runner.debugTestFile",
+          "when": "viewItem == testFile",
+          "group": "navigation"
+        },
+        {
+          "command": "vstest-runner.runTest",
+          "when": "viewItem == testMethod",
+          "group": "navigation"
+        },
+        {
+          "command": "vstest-runner.debugTestMethod",
+          "when": "viewItem == testMethod",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "vstest-runner.buildComplete",
+          "title": "VSTest (.NET Framework): Clean, Restore, Rebuild Solution"
+        },
+        {
+          "command": "vstest-runner.cleanSolution",
+          "title": "VSTest (.NET Framework): Clean Solution"
+        },
+        {
+          "command": "vstest-runner.restoreSolution",
+          "title": "VSTest (.NET Framework): Restore Solution"
+        },
+        {
+          "command": "vstest-runner.rebuildSolution",
+          "title": "VSTest (.NET Framework): Rebuild Solution"
+        },
+        {
+          "command": "vstest-runner.buildSolution",
+          "title": "VSTest (.NET Framework): Build Solution"
+        },
+        {
+          "command": "vstest-runner.launchOnIssExpress",
+          "title": "VSTest (.NET Framework): Launch on IIS Express"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.54.0",
+    "@types/xml2js": "^0.4.14",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.19.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "xml2js": "^0.6.2"
+  }
+}
