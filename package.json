@@ -111,7 +111,11 @@
         {
           "id": "vstestBuildView",
           "name": "Solution Actions",
-          "when": "workspaceFolderCount != 0" 
+          "when": "workspaceFolderCount != 0"
+        },
+        {
+          "id": "solutionExplorer",
+          "name": "Solution Explorer (.NET Framework)"
         }
       ]
     },
@@ -187,6 +191,7 @@
     "typescript": "^5.7.3"
   },
   "dependencies": {
+    "fast-xml-parser": "^4.5.1",
     "xml2js": "^0.6.2"
   }
 }

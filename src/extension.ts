@@ -7,6 +7,7 @@ import { OpenTestFilesProvider } from './providers/OpenTestFilesProvider';
 import { SingleTestRunnerProvider } from './providers/SingleTestRunnerProvider';
 import { MultipleTestsRunnerProvider } from './providers/MultipleTestsRunnerProvider';
 import { TestRunnerViewProvider } from './providers/TestRunnerViewProvider';
+import { SolutionExplorerProvider } from './providers/SolutionExplorerProvider';
 
 const outputChannel = vscode.window.createOutputChannel('vstest-runner');
 
@@ -22,6 +23,9 @@ export function activate(context: vscode.ExtensionContext) {
 
 	const testRunnerViewProvider = new TestRunnerViewProvider();
 	vscode.window.registerTreeDataProvider("vstestBuildView", new TestRunnerViewProvider());
+
+	const solutionExplorer = new SolutionExplorerProvider(vscode.workspace.rootPath || '');
+    vscode.window.registerTreeDataProvider('solutionExplorer', solutionExplorer);
 
 	// Cria um botao no status bar
     // (() => {

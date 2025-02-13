@@ -125,6 +125,8 @@ export class TestUtils {
         }
     }
 
+    
+
     static async findFilesByExtensions(extensions: string[], returnTestsOnly: boolean): Promise<vscode.Uri[]> {
         const globPattern = `**/*.{${extensions.map(ext => ext.replace('.', '')).join(',')}}`;
     

@@ -13,6 +13,6 @@ export class TestGroupItem extends vscode.TreeItem {
             arguments: [filePath]
         };
         this.contextValue = "testFile";
-        this.iconPath = new vscode.ThemeIcon('file-code');
+        this.iconPath = new vscode.ThemeIcon('beaker');
     }
 }
