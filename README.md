@@ -8,6 +8,13 @@ VSCode extension created to run unit tests from an .NET Framework application us
 - npm run watch
 - F5 to build on VS Code
 
+Install it locally:
+npm install -g @vscode/vsce
+npm run compile
+vsce package
+
+code --install-extension your-path\generated-extension.vsix
+
 ## Features
 
 - List test files from one specific .dll
